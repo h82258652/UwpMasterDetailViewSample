@@ -29,21 +29,18 @@ namespace UwpMasterDetailViewSample.Services
                     }
 
                     var frame = masterDetailView.IsDisplayDetail ? DetailFrame : MasterFrame;
-
                     if (frame.Content == null)
                     {
                         return UnknownPageKey;
                     }
 
                     var currentType = frame.Content.GetType();
-
                     if (PagesByKey.ContainsValue(currentType) == false)
                     {
                         return UnknownPageKey;
                     }
 
                     var item = PagesByKey.FirstOrDefault(temp => temp.Value == currentType);
-
                     return item.Key;
                 }
             }
