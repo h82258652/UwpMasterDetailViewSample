@@ -1,0 +1,11 @@
+﻿<Application x:Class="UwpMasterDetailViewSample.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:viewModels="using:UwpMasterDetailViewSample.ViewModels"
+             RequestedTheme="Light">
+    <Application.Resources>
+        <ResourceDictionary>
+            <viewModels:ViewModelLocator x:Key="Locator" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

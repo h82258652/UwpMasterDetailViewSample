@@ -1,0 +1,34 @@
+﻿<Page x:Class="UwpMasterDetailViewSample.Views.DetailView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      DataContext="{Binding Source={StaticResource Locator},
+                          Path=Detail}"
+      mc:Ignorable="d">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0"
+                Style="{StaticResource NavigationBackButtonNormalStyle}" />
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0"
+                       FontWeight="Bold"
+                       Text="{Binding Path=Article.Title}"
+                       TextAlignment="Center" />
+            <TextBlock Grid.Row="1"
+                       Text="{Binding Path=Article.Content}"
+                       TextWrapping="Wrap" />
+        </Grid>
+        <Button Grid.Row="2"
+                HorizontalAlignment="Center"
+                Content="评论" />
+    </Grid>
+</Page>
