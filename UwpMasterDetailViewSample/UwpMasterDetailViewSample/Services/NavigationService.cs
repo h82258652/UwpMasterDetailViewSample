@@ -70,7 +70,7 @@ namespace UwpMasterDetailViewSample.Services
 
         public void GoBack()
         {
-            var masterDetailView = Window.Current.Content.GetFirstDescendantOfType<MasterDetailView>();
+            var masterDetailView = Window.Current.Content?.GetFirstDescendantOfType<MasterDetailView>();
             if (masterDetailView == null)
             {
                 return;
