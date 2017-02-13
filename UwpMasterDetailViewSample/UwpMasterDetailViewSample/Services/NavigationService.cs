@@ -99,7 +99,14 @@ namespace UwpMasterDetailViewSample.Services
 
                 switch (pageKey)
                 {
+                    case ViewModelLocator.MasterViewKey:
+                    case ViewModelLocator.AboutViewKey:
+                        MasterFrame?.Navigate(PagesByKey[pageKey], parameter);
+                        break;
+
+                    case ViewModelLocator.NoDetailViewKey:
                     case ViewModelLocator.DetailViewKey:
+                    case ViewModelLocator.CommentViewKey:
                         DetailFrame?.Navigate(PagesByKey[pageKey], parameter);
                         break;
                 }
