@@ -5,8 +5,8 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using GalaSoft.MvvmLight.Views;
 using UwpMasterDetailViewSample.Controls;
-using UwpMasterDetailViewSample.Extensions;
 using UwpMasterDetailViewSample.ViewModels;
+using WinRTXamlToolkit.Controls.Extensions;
 
 namespace UwpMasterDetailViewSample.Services
 {
@@ -22,7 +22,7 @@ namespace UwpMasterDetailViewSample.Services
             {
                 lock (PagesByKey)
                 {
-                    var masterDetailView = WinRTXamlToolkit.Controls.Extensions.VisualTreeHelperExtensions.GetFirstDescendantOfType<MasterDetailView>(Window.Current.Content);
+                    var masterDetailView = Window.Current.Content.GetFirstDescendantOfType<MasterDetailView>();
                     if (masterDetailView == null)
                     {
                         return UnknownPageKey;
@@ -73,7 +73,7 @@ namespace UwpMasterDetailViewSample.Services
 
         public void GoBack()
         {
-            var masterDetailView = WinRTXamlToolkit.Controls.Extensions.VisualTreeHelperExtensions.GetFirstDescendantOfType<MasterDetailView>(Window.Current.Content);
+            var masterDetailView = Window.Current.Content.GetFirstDescendantOfType<MasterDetailView>();
             if (masterDetailView == null)
             {
                 return;

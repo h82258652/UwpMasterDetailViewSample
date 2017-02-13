@@ -98,8 +98,8 @@
     <Compile Include="Behaviors\GoBackAction.cs" />
     <Compile Include="Controls\MasterDetailView.cs" />
     <Compile Include="Controls\MasterDetailViewState.cs" />
+    <Compile Include="Converters\IsDisplayDetailConverter.cs" />
     <Compile Include="Converters\ItemClickEventArgsConverter.cs" />
-    <Compile Include="Extensions\VisualTreeHelperExtensions.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
