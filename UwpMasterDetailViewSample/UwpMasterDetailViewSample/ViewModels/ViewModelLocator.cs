@@ -7,7 +7,15 @@ namespace UwpMasterDetailViewSample.ViewModels
 {
     public class ViewModelLocator
     {
+        public const string AboutViewKey = "About";
+
+        public const string CommentViewKey = "Comment";
+
         public const string DetailViewKey = "Detail";
+
+        public const string MasterViewKey = "Master";
+
+        public const string NoDetailViewKey = "NoDetail";
 
         static ViewModelLocator()
         {
@@ -34,7 +42,11 @@ namespace UwpMasterDetailViewSample.ViewModels
         private static INavigationService CreateNavigationService()
         {
             var navigationService = new Services.NavigationService();
+            navigationService.Configure(MasterViewKey, typeof(MasterView));
             navigationService.Configure(DetailViewKey, typeof(DetailView));
+            navigationService.Configure(AboutViewKey, typeof(AboutView));
+            navigationService.Configure(CommentViewKey, typeof(CommentView));
+            navigationService.Configure(NoDetailViewKey, typeof(NoDetailView));
             return navigationService;
         }
     }
