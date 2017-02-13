@@ -22,7 +22,7 @@ namespace UwpMasterDetailViewSample.Services
             {
                 lock (PagesByKey)
                 {
-                    var masterDetailView = Window.Current.Content.GetFirstDescendantOfType<MasterDetailView>();
+                    var masterDetailView = Window.Current.Content?.GetFirstDescendantOfType<MasterDetailView>();
                     if (masterDetailView == null)
                     {
                         return UnknownPageKey;
