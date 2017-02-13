@@ -7,7 +7,6 @@ namespace UwpMasterDetailViewSample.Controls
     [TemplateVisualState(GroupName = AdaptiveStatesGroupName, Name = BothStateName)]
     [TemplateVisualState(GroupName = AdaptiveStatesGroupName, Name = MasterStateName)]
     [TemplateVisualState(GroupName = AdaptiveStatesGroupName, Name = DetailStateName)]
-    [TemplatePart(Name = MasterColumnTemplateName, Type = typeof(ColumnDefinition))]
     public class MasterDetailView : Control
     {
         public static readonly DependencyProperty DetailContentProperty = DependencyProperty.Register(nameof(DetailContent), typeof(object), typeof(MasterDetailView), new PropertyMetadata(default(object)));
@@ -20,7 +19,7 @@ namespace UwpMasterDetailViewSample.Controls
 
         public static readonly DependencyProperty MasterContentTemplateProperty = DependencyProperty.Register(nameof(MasterContentTemplate), typeof(DataTemplate), typeof(MasterDetailView), new PropertyMetadata(default(DataTemplate)));
 
-        public static readonly DependencyProperty MasterPaneWidthProperty = DependencyProperty.Register(nameof(MasterPaneWidth), typeof(GridLength), typeof(MasterDetailView), new PropertyMetadata(default(GridLength), OnMasterPaneWidthChanged));
+        public static readonly DependencyProperty MasterPaneWidthProperty = DependencyProperty.Register(nameof(MasterPaneWidth), typeof(GridLength), typeof(MasterDetailView), new PropertyMetadata(default(GridLength)));
 
         public static readonly DependencyProperty ViewStateProperty = DependencyProperty.Register(nameof(ViewState), typeof(MasterDetailViewState), typeof(MasterDetailView), new PropertyMetadata(MasterDetailViewState.Both, OnViewStateChanged));
 
@@ -30,11 +29,7 @@ namespace UwpMasterDetailViewSample.Controls
 
         private const string DetailStateName = "Detail";
 
-        private const string MasterColumnTemplateName = "PART_MasterColumn";
-
         private const string MasterStateName = "Master";
-
-        private ColumnDefinition _masterColumn;
 
         public MasterDetailView()
         {
@@ -131,9 +126,6 @@ namespace UwpMasterDetailViewSample.Controls
         {
             base.OnApplyTemplate();
 
-            _masterColumn = (ColumnDefinition)GetTemplateChild(MasterColumnTemplateName);
-            _masterColumn.Width = MasterPaneWidth;
-
             UpdateViewState();
         }
 
@@ -157,18 +149,6 @@ namespace UwpMasterDetailViewSample.Controls
                         obj.ViewState = MasterDetailViewState.Master;
                     }
                     break;
-            }
-        }
-
-        private static void OnMasterPaneWidthChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var obj = (MasterDetailView)d;
-            var value = (GridLength)e.NewValue;
-
-            var masterColumn = obj._masterColumn;
-            if (masterColumn != null)
-            {
-                masterColumn.Width = value;
             }
         }
 

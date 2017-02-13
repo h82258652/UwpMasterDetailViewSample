@@ -9,8 +9,7 @@
                 <ControlTemplate TargetType="controls:MasterDetailView">
                     <Grid Background="{TemplateBinding Background}">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition x:Name="PART_MasterColumn"
-                                              Width="Auto" />
+                            <ColumnDefinition Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=MasterPaneWidth}" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <VisualStateManager.VisualStateGroups>
