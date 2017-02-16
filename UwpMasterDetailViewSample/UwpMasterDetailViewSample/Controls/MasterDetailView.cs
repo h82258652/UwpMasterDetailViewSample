@@ -21,6 +21,8 @@ namespace UwpMasterDetailViewSample.Controls
 
         public static readonly DependencyProperty MasterPaneWidthProperty = DependencyProperty.Register(nameof(MasterPaneWidth), typeof(GridLength), typeof(MasterDetailView), new PropertyMetadata(default(GridLength)));
 
+        public static readonly DependencyProperty SplitterProperty = DependencyProperty.Register(nameof(Splitter), typeof(object), typeof(MasterDetailView), new PropertyMetadata(default(object)));
+
         public static readonly DependencyProperty ViewStateProperty = DependencyProperty.Register(nameof(ViewState), typeof(MasterDetailViewState), typeof(MasterDetailView), new PropertyMetadata(MasterDetailViewState.Both, OnViewStateChanged));
 
         private const string AdaptiveStatesGroupName = "AdaptiveStates";
@@ -107,6 +109,18 @@ namespace UwpMasterDetailViewSample.Controls
             set
             {
                 SetValue(MasterPaneWidthProperty, value);
+            }
+        }
+
+        public object Splitter
+        {
+            get
+            {
+                return GetValue(SplitterProperty);
+            }
+            set
+            {
+                SetValue(SplitterProperty, value);
             }
         }
 

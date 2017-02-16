@@ -16,6 +16,10 @@
                 <Frame x:Name="MasterFrame"
                        SourcePageType="views:MasterView" />
             </controls:MasterDetailView.MasterContent>
+            <controls:MasterDetailView.Splitter>
+                <Border Width="1"
+                        Background="Red" />
+            </controls:MasterDetailView.Splitter>
             <controls:MasterDetailView.DetailContent>
                 <Frame x:Name="DetailFrame"
                        SourcePageType="views:NoDetailView" />

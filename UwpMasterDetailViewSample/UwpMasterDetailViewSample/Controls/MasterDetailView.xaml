@@ -10,6 +10,7 @@
                     <Grid Background="{TemplateBinding Background}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=MasterPaneWidth}" />
+                            <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <VisualStateManager.VisualStateGroups>
@@ -28,7 +29,15 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="MasterGrid"
                                                                        Storyboard.TargetProperty="(Grid.ColumnSpan)">
                                             <DiscreteObjectKeyFrame KeyTime="0:0:0"
-                                                                    Value="2" />
+                                                                    Value="3" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="SplitterHost"
+                                                                       Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Collapsed</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -50,7 +59,15 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="DetailGrid"
                                                                        Storyboard.TargetProperty="(Grid.ColumnSpan)">
                                             <DiscreteObjectKeyFrame KeyTime="0:0:0"
-                                                                    Value="2" />
+                                                                    Value="3" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="SplitterHost"
+                                                                       Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Collapsed</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -61,8 +78,11 @@
                             <ContentPresenter Content="{TemplateBinding MasterContent}"
                                               ContentTemplate="{TemplateBinding MasterContentTemplate}" />
                         </Grid>
+                        <ContentPresenter x:Name="SplitterHost"
+                                          Grid.Column="1"
+                                          Content="{TemplateBinding Splitter}" />
                         <Grid x:Name="DetailGrid"
-                              Grid.Column="1">
+                              Grid.Column="2">
                             <ContentPresenter Content="{TemplateBinding DetailContent}"
                                               ContentTemplate="{TemplateBinding DetailContentTemplate}" />
                         </Grid>
