@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:controls="using:UwpMasterDetailViewSample.Controls">
+                    xmlns:controls="using:UwpMasterDetailViewSample.Controls"
+                    xmlns:extensions="using:WinRTXamlToolkit.Controls.Extensions">
     <Style TargetType="controls:MasterDetailView">
         <Setter Property="MasterPaneWidth"
                 Value="320" />
@@ -73,19 +74,22 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
+                        <Grid x:Name="DetailGrid"
+                              Grid.Column="2"
+                              extensions:FrameworkElementExtensions.ClipToBounds="True">
+                            <ContentPresenter Content="{TemplateBinding DetailContent}"
+                                              ContentTemplate="{TemplateBinding DetailContentTemplate}" />
+                        </Grid>
                         <Grid x:Name="MasterGrid"
-                              Grid.Column="0">
+                              Grid.Column="0"
+                              extensions:FrameworkElementExtensions.ClipToBounds="True">
                             <ContentPresenter Content="{TemplateBinding MasterContent}"
                                               ContentTemplate="{TemplateBinding MasterContentTemplate}" />
                         </Grid>
                         <ContentPresenter x:Name="SplitterHost"
                                           Grid.Column="1"
+                                          extensions:FrameworkElementExtensions.ClipToBounds="True"
                                           Content="{TemplateBinding Splitter}" />
-                        <Grid x:Name="DetailGrid"
-                              Grid.Column="2">
-                            <ContentPresenter Content="{TemplateBinding DetailContent}"
-                                              ContentTemplate="{TemplateBinding DetailContentTemplate}" />
-                        </Grid>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
